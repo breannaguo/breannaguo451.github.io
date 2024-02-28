@@ -145,7 +145,7 @@ background-size: cover;
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">About Breanna Guo</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
@@ -213,7 +213,6 @@ background-size: cover;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
 <th data-quarto-table-cell-role="th">studyName</th>
 <th data-quarto-table-cell-role="th">Sample Number</th>
 <th data-quarto-table-cell-role="th">Species</th>
@@ -236,7 +235,6 @@ background-size: cover;
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>182</td>
 <td>PAL0809</td>
 <td>31</td>
 <td>Chinstrap penguin (Pygoscelis antarctica)</td>
@@ -257,7 +255,6 @@ background-size: cover;
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>192</td>
 <td>PAL0809</td>
 <td>41</td>
 <td>Chinstrap penguin (Pygoscelis antarctica)</td>
@@ -278,7 +275,6 @@ background-size: cover;
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>223</td>
 <td>PAL0708</td>
 <td>4</td>
 <td>Gentoo penguin (Pygoscelis papua)</td>
@@ -299,7 +295,6 @@ background-size: cover;
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>234</td>
 <td>PAL0708</td>
 <td>15</td>
 <td>Gentoo penguin (Pygoscelis papua)</td>
@@ -320,7 +315,6 @@ background-size: cover;
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>185</td>
 <td>PAL0809</td>
 <td>34</td>
 <td>Chinstrap penguin (Pygoscelis antarctica)</td>
@@ -356,7 +350,7 @@ background-size: cover;
 <h3 class="anchored" data-anchor-id="starting-with-data-preparation">Starting with Data Preparation:</h3>
 <section id="converting-sex-and-island-columns-into-binary-values." class="level5">
 <h5 class="anchored" data-anchor-id="converting-sex-and-island-columns-into-binary-values.">Converting “Sex” and “Island” columns into binary values.</h5>
-<div id="cell-5" class="cell" data-execution_count="33">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>le.fit(train[<span class="st">"Species"</span>])</span>
@@ -375,311 +369,71 @@ background-size: cover;
 </section>
 <section id="next-in-variable-selection-to-narrow-the-options-down-to-just-three-variables-one-thing-that-can-be-done-is-remove-variables-with-low-variance.-choosing-to-set-a-threshold-at-80-for-example-removes-variables-where-80-or-more-observations-share-the-same-variable-value." class="level5">
 <h5 class="anchored" data-anchor-id="next-in-variable-selection-to-narrow-the-options-down-to-just-three-variables-one-thing-that-can-be-done-is-remove-variables-with-low-variance.-choosing-to-set-a-threshold-at-80-for-example-removes-variables-where-80-or-more-observations-share-the-same-variable-value.">Next, in variable selection, to narrow the options down to just three variables, one thing that can be done is remove variables with low variance. Choosing to set a threshold at 80%, for example, removes variables where 80% or more observations share the same variable value.</h5>
-<div id="cell-7" class="cell" data-execution_count="28">
+<div id="cell-7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> VarianceThreshold</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>thresh <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.8</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.8</span>)))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>highVar <span class="op">=</span> thresh.fit_transform(X_train)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>highVar.shape, X_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
-<th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
-<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Body Mass (g)</th>
-<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
-<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
-<th data-quarto-table-cell-role="th">Island_Biscoe</th>
-<th data-quarto-table-cell-role="th">Island_Dream</th>
-<th data-quarto-table-cell-role="th">Island_Torgersen</th>
-<th data-quarto-table-cell-role="th">Stage_Adult, 1 Egg Stage</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_No</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_Yes</th>
-<th data-quarto-table-cell-role="th">Sex_FEMALE</th>
-<th data-quarto-table-cell-role="th">Sex_MALE</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>182</td>
-<td>40.9</td>
-<td>16.6</td>
-<td>187.0</td>
-<td>3200.0</td>
-<td>9.08458</td>
-<td>-24.54903</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>192</td>
-<td>49.0</td>
-<td>19.5</td>
-<td>210.0</td>
-<td>3950.0</td>
-<td>9.53262</td>
-<td>-24.66867</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>223</td>
-<td>50.0</td>
-<td>15.2</td>
-<td>218.0</td>
-<td>5700.0</td>
-<td>8.25540</td>
-<td>-25.40075</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>234</td>
-<td>45.8</td>
-<td>14.6</td>
-<td>210.0</td>
-<td>4200.0</td>
-<td>7.79958</td>
-<td>-25.62618</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>185</td>
-<td>51.0</td>
-<td>18.8</td>
-<td>203.0</td>
-<td>4100.0</td>
-<td>9.23196</td>
-<td>-24.17282</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-</tbody>
-</table>
-
-</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>((256, 10), (256, 14))</code></pre>
 </div>
 </div>
 </section>
 <section id="removing-features-with-less-than-20-variance-got-rid-of-4-out-of-15-variables.-as-variance-increases-i-am-interested-in-when-and-where-the-msot-variables-no-longer-make-the-threshold" class="level5">
 <h5 class="anchored" data-anchor-id="removing-features-with-less-than-20-variance-got-rid-of-4-out-of-15-variables.-as-variance-increases-i-am-interested-in-when-and-where-the-msot-variables-no-longer-make-the-threshold">Removing features with less than 20% variance got rid of 4 out of 15 variables. As variance increases, I am interested in when and where the msot variables no longer make the threshold</h5>
-<div id="cell-9" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>thresh1 <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.5</span>)))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>highVar1 <span class="op">=</span> thresh1.fit_transform(X_train)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>highVar1.shape, X_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
-<th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
-<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Body Mass (g)</th>
-<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
-<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
-<th data-quarto-table-cell-role="th">Island_Biscoe</th>
-<th data-quarto-table-cell-role="th">Island_Dream</th>
-<th data-quarto-table-cell-role="th">Island_Torgersen</th>
-<th data-quarto-table-cell-role="th">Stage_Adult, 1 Egg Stage</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_No</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_Yes</th>
-<th data-quarto-table-cell-role="th">Sex_FEMALE</th>
-<th data-quarto-table-cell-role="th">Sex_MALE</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>182</td>
-<td>40.9</td>
-<td>16.6</td>
-<td>187.0</td>
-<td>3200.0</td>
-<td>9.08458</td>
-<td>-24.54903</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>192</td>
-<td>49.0</td>
-<td>19.5</td>
-<td>210.0</td>
-<td>3950.0</td>
-<td>9.53262</td>
-<td>-24.66867</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>223</td>
-<td>50.0</td>
-<td>15.2</td>
-<td>218.0</td>
-<td>5700.0</td>
-<td>8.25540</td>
-<td>-25.40075</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>234</td>
-<td>45.8</td>
-<td>14.6</td>
-<td>210.0</td>
-<td>4200.0</td>
-<td>7.79958</td>
-<td>-25.62618</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>185</td>
-<td>51.0</td>
-<td>18.8</td>
-<td>203.0</td>
-<td>4100.0</td>
-<td>9.23196</td>
-<td>-24.17282</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-</tr>
-</tbody>
-</table>
-
-</div>
+<div id="cell-9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>thresh1 <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.5</span>)))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>highVar1 <span class="op">=</span> thresh1.fit_transform(X_train)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>highVar1.shape, X_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>((256, 6), (256, 14))</code></pre>
 </div>
 </div>
 </section>
 <section id="at-around-50-variance-the-majority-of-variables-no-longer-reach-the-variance-threshold.-cool-i-will-probably-use-a-threshold-around-30-variance" class="level5">
 <h5 class="anchored" data-anchor-id="at-around-50-variance-the-majority-of-variables-no-longer-reach-the-variance-threshold.-cool-i-will-probably-use-a-threshold-around-30-variance">At around 50% variance, the majority of variables no longer reach the variance threshold. Cool! I will probably use a threshold around 30% variance</h5>
-<div id="cell-11" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>thresh30 <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>highVar30 <span class="op">=</span> thresh30.fit_transform(X_train)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>highVar30.shape, X_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>((256, 11), (256, 15))</code></pre>
+<div id="cell-11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>thresh30 <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>highVar30 <span class="op">=</span> thresh30.fit_transform(X_train)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>highVar30.shape, X_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>((256, 10), (256, 14))</code></pre>
 </div>
 </div>
 </section>
 <section id="next-using-univariate-feature-selection-we-can-use-an-f-test-to-retreive-the-three-best-features-for-the-dataset-estimating-the-degree-of-linear-dependency-between-the-variables." class="level5">
 <h5 class="anchored" data-anchor-id="next-using-univariate-feature-selection-we-can-use-an-f-test-to-retreive-the-three-best-features-for-the-dataset-estimating-the-degree-of-linear-dependency-between-the-variables.">Next, using Univariate feature selection, we can use an F-test to retreive the three best features for the dataset, estimating the degree of linear dependency between the variables.</h5>
-<div id="cell-13" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from sklearn.datasets import load_iris</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> f_classif</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#X_train, y_train = load_iris(return_X_y = True)</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X_train.shape</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and fit selector</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>X_new.fit(X_train, y_train)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SelectKBest(k=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked=""><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">SelectKBest</label><div class="sk-toggleable__content"><pre>SelectKBest(k=3)</pre></div></div></div></div></div>
+<div id="cell-13" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from sklearn.datasets import load_iris</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> f_classif</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#X_train, y_train = load_iris(return_X_y = True)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X_train.shape</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and fit selector</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>X_new.fit(X_train, y_train)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [9] are constant.
+  warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
+/Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
+  f = msb / msw</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SelectKBest(k=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">SelectKBest</label><div class="sk-toggleable__content"><pre>SelectKBest(k=3)</pre></div></div></div></div></div>
 </div>
 </div>
 </section>
 <section id="now-that-we-have-the-3-best-features-we-have-to-create-a-new-dataframe-with-the-columns-we-want-in-it" class="level5">
 <h5 class="anchored" data-anchor-id="now-that-we-have-the-3-best-features-we-have-to-create-a-new-dataframe-with-the-columns-we-want-in-it">Now that we have the 3 best features, we have to create a new dataframe with the columns we want in it</h5>
-<div id="cell-15" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get columns to keep and create new dataframe</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_new.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_train_new <span class="op">=</span> X_train.iloc[:,cols]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>X_train_new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>AttributeError: 'numpy.ndarray' object has no attribute 'iloc'</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="interesting.-so-after-all-of-that-there-are-three-columns-unnamed-0-culmen-length-mm-and-flipper-length-mm.-what-is-unnamed0-was-that-in-the-original-data-set-and-named-as-such-or-did-the-name-get-lost-in-translation" class="level3">
-<h3 class="anchored" data-anchor-id="interesting.-so-after-all-of-that-there-are-three-columns-unnamed-0-culmen-length-mm-and-flipper-length-mm.-what-is-unnamed0-was-that-in-the-original-data-set-and-named-as-such-or-did-the-name-get-lost-in-translation">Interesting…. so after all of that, there are three columns: Unnamed: 0, Culmen Length (mm), and Flipper Length (mm). What is unnamed:0? was that in the original data set and named as such or did the name get lost in translation?</h3>
-<div id="cell-17" class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>train.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="93">
+<div id="cell-15" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get columns to keep and create new dataframe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_new.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>X_train_new <span class="op">=</span> X_train.iloc[:,cols]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>X_train_new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -687,131 +441,41 @@ background-size: cover;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">studyName</th>
-<th data-quarto-table-cell-role="th">Sample Number</th>
-<th data-quarto-table-cell-role="th">Species</th>
-<th data-quarto-table-cell-role="th">Region</th>
-<th data-quarto-table-cell-role="th">Island</th>
-<th data-quarto-table-cell-role="th">Stage</th>
-<th data-quarto-table-cell-role="th">Individual ID</th>
-<th data-quarto-table-cell-role="th">Clutch Completion</th>
-<th data-quarto-table-cell-role="th">Date Egg</th>
 <th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
 <th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
 <th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Body Mass (g)</th>
-<th data-quarto-table-cell-role="th">Sex</th>
-<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
-<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
-<th data-quarto-table-cell-role="th">Comments</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>182</td>
-<td>PAL0809</td>
-<td>31</td>
-<td>Chinstrap penguin (Pygoscelis antarctica)</td>
-<td>Anvers</td>
-<td>Dream</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N63A1</td>
-<td>Yes</td>
-<td>11/24/08</td>
 <td>40.9</td>
 <td>16.6</td>
 <td>187.0</td>
-<td>3200.0</td>
-<td>FEMALE</td>
-<td>9.08458</td>
-<td>-24.54903</td>
-<td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>192</td>
-<td>PAL0809</td>
-<td>41</td>
-<td>Chinstrap penguin (Pygoscelis antarctica)</td>
-<td>Anvers</td>
-<td>Dream</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N74A1</td>
-<td>Yes</td>
-<td>11/24/08</td>
 <td>49.0</td>
 <td>19.5</td>
 <td>210.0</td>
-<td>3950.0</td>
-<td>MALE</td>
-<td>9.53262</td>
-<td>-24.66867</td>
-<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>223</td>
-<td>PAL0708</td>
-<td>4</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N32A2</td>
-<td>Yes</td>
-<td>11/27/07</td>
 <td>50.0</td>
 <td>15.2</td>
 <td>218.0</td>
-<td>5700.0</td>
-<td>MALE</td>
-<td>8.25540</td>
-<td>-25.40075</td>
-<td>NaN</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>234</td>
-<td>PAL0708</td>
-<td>15</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N38A1</td>
-<td>Yes</td>
-<td>12/3/07</td>
 <td>45.8</td>
 <td>14.6</td>
 <td>210.0</td>
-<td>4200.0</td>
-<td>FEMALE</td>
-<td>7.79958</td>
-<td>-25.62618</td>
-<td>NaN</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>185</td>
-<td>PAL0809</td>
-<td>34</td>
-<td>Chinstrap penguin (Pygoscelis antarctica)</td>
-<td>Anvers</td>
-<td>Dream</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N65A2</td>
-<td>Yes</td>
-<td>11/24/08</td>
 <td>51.0</td>
 <td>18.8</td>
 <td>203.0</td>
-<td>4100.0</td>
-<td>MALE</td>
-<td>9.23196</td>
-<td>-24.17282</td>
-<td>NaN</td>
 </tr>
 </tbody>
 </table>
@@ -819,94 +483,36 @@ background-size: cover;
 </div>
 </div>
 </div>
-<section id="ok-so-unnamed-0-exists-in-the-main-dataset-i-wonder-if-there-are-any-duplicated-values-in-unnamed-0" class="level5">
-<h5 class="anchored" data-anchor-id="ok-so-unnamed-0-exists-in-the-main-dataset-i-wonder-if-there-are-any-duplicated-values-in-unnamed-0">Ok so Unnamed: 0 exists in the main dataset, I wonder if there are any duplicated values in Unnamed: 0</h5>
-<div id="cell-19" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X_train[X_train.duplicated([<span class="st">'Unnamed: 0'</span>], keep<span class="op">=</span><span class="va">False</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
-<th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
-<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Body Mass (g)</th>
-<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
-<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
-<th data-quarto-table-cell-role="th">Island_Biscoe</th>
-<th data-quarto-table-cell-role="th">Island_Dream</th>
-<th data-quarto-table-cell-role="th">Island_Torgersen</th>
-<th data-quarto-table-cell-role="th">Stage_Adult, 1 Egg Stage</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_No</th>
-<th data-quarto-table-cell-role="th">Clutch Completion_Yes</th>
-<th data-quarto-table-cell-role="th">Sex_FEMALE</th>
-<th data-quarto-table-cell-role="th">Sex_MALE</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>X_train[<span class="st">'Unnamed: 0'</span>], X_train[<span class="st">'Unnamed: 0'</span>].<span class="bu">max</span>(), X_train[<span class="st">'Unnamed: 0'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
-<pre><code>(0      182
- 1      192
- 2      223
- 3      234
- 4      185
-       ... 
- 270    319
- 271     68
- 272     32
- 273      4
- 274    172
- Name: Unnamed: 0, Length: 256, dtype: int64,
- 343,
- 2)</code></pre>
-</div>
-</div>
 </section>
-<section id="there-are-no-duplicated-values-in-that-column.-since-that-is-the-case-i-believe-it-is-some-other-form-of-unique-identifier-which-will-overfit-any-model." class="level5">
-<h5 class="anchored" data-anchor-id="there-are-no-duplicated-values-in-that-column.-since-that-is-the-case-i-believe-it-is-some-other-form-of-unique-identifier-which-will-overfit-any-model.">There are no duplicated values in that column. Since that is the case, I believe it is some other form of unique identifier, which will overfit any model.</h5>
-</section>
-<section id="additionally-ive-learned-that-the-top-3-variables-this-method-will-pick-are-3-quantitative-variables.-one-of-the-restrictions-of-this-assignment-are-that-one-of-the-three-variables-used-must-be-qualitative.-so-in-the-next-run-i-will-split-the-columns-into-quantitative-and-qualitative-and-pick-the-top-quantitative-variables-and-the-top-qualitative-variables" class="level5">
-<h5 class="anchored" data-anchor-id="additionally-ive-learned-that-the-top-3-variables-this-method-will-pick-are-3-quantitative-variables.-one-of-the-restrictions-of-this-assignment-are-that-one-of-the-three-variables-used-must-be-qualitative.-so-in-the-next-run-i-will-split-the-columns-into-quantitative-and-qualitative-and-pick-the-top-quantitative-variables-and-the-top-qualitative-variables">Additionally, I’ve learned that the top 3 variables this method will pick are 3 quantitative variables. One of the restrictions of this assignment are that one of the three variables used must be qualitative. So in the next run, I will split the columns into quantitative and qualitative, and pick the top quantitative variables and the top qualitative variables</h5>
+<section id="ive-learned-that-the-top-3-variables-this-method-will-pick-are-3-quantitative-variables.-one-of-the-restrictions-of-this-assignment-are-that-one-of-the-three-variables-used-must-be-qualitative.-so-in-the-next-run-i-will-split-the-columns-into-quantitative-and-qualitative-and-pick-the-top-quantitative-variables-and-the-top-qualitative-variables" class="level5">
+<h5 class="anchored" data-anchor-id="ive-learned-that-the-top-3-variables-this-method-will-pick-are-3-quantitative-variables.-one-of-the-restrictions-of-this-assignment-are-that-one-of-the-three-variables-used-must-be-qualitative.-so-in-the-next-run-i-will-split-the-columns-into-quantitative-and-qualitative-and-pick-the-top-quantitative-variables-and-the-top-qualitative-variables">I’ve learned that the top 3 variables this method will pick are 3 quantitative variables. One of the restrictions of this assignment are that one of the three variables used must be qualitative. So in the next run, I will split the columns into quantitative and qualitative, and pick the top quantitative variables and the top qualitative variables</h5>
 </section>
 </section>
-<section id="running-it-all-again-without-unnamed-0" class="level3">
-<h3 class="anchored" data-anchor-id="running-it-all-again-without-unnamed-0">Running it all again without ‘Unnamed: 0’</h3>
-<div id="cell-23" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># redefining the prepare_data function to remove the Unnamed: 0 column. Also, including the egg laying and region data</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare_data1(df):</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.drop([<span class="st">"studyName"</span>, <span class="st">"Sample Number"</span>, <span class="st">"Individual ID"</span>, <span class="st">"Comments"</span>, <span class="st">"Unnamed: 0"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df[df[<span class="st">"Sex"</span>] <span class="op">!=</span> <span class="st">"."</span>]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.dropna()</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> le.transform(df[<span class="st">"Species"</span>])</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.drop([<span class="st">"Species"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assigning dummy values the "int" data type</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> pd.get_dummies(df,dtype <span class="op">=</span> <span class="bu">int</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> df, y</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># recreating the training data</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>X_train1, y_train1 <span class="op">=</span> prepare_data1(train)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">#discerining the quantitative and qualitative variables</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy variables represent qualitative values. Since they are "int" data types, </span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># and other quantiative variables are "float", they can be separated</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>all_qual_cols <span class="op">=</span> X_train1.select_dtypes(exclude<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>all_quant_cols <span class="op">=</span> X_train1.select_dtypes(include<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>X_train1[all_qual_cols.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
+<section id="running-it-all-again-with-more-variables-and-separating-quantitative-and-qualitative-variables" class="level3">
+<h3 class="anchored" data-anchor-id="running-it-all-again-with-more-variables-and-separating-quantitative-and-qualitative-variables">Running it all again with more variables and separating quantitative and qualitative variables</h3>
+<div id="cell-18" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># redefining the prepare_data function to remove the Unnamed: 0 column. Also, including the egg laying and region data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare_data1(df):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.drop([<span class="st">"studyName"</span>, <span class="st">"Sample Number"</span>, <span class="st">"Individual ID"</span>, <span class="st">"Comments"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df[df[<span class="st">"Sex"</span>] <span class="op">!=</span> <span class="st">"."</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.dropna()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  y <span class="op">=</span> le.transform(df[<span class="st">"Species"</span>])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> df.drop([<span class="st">"Species"</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># assigning dummy values the "int" data type</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> pd.get_dummies(df,dtype <span class="op">=</span> <span class="bu">int</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> df, y</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># recreating the training data</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>X_train1, y_train1 <span class="op">=</span> prepare_data1(train)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#discerining the quantitative and qualitative variables</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy variables represent qualitative values. Since they are "int" data types, </span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># and other quantiative variables are "float", they can be separated</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>all_qual_cols <span class="op">=</span> X_train1.select_dtypes(exclude<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>all_quant_cols <span class="op">=</span> X_train1.select_dtypes(include<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>X_train1[all_qual_cols.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -1213,48 +819,48 @@ background-size: cover;
 <section id="now-that-i-have-quantitative-and-qualitiative-variables-split-i-will-proceed-with-the-following-feature-chosing-methods-having-them-separated." class="level5">
 <h5 class="anchored" data-anchor-id="now-that-i-have-quantitative-and-qualitiative-variables-split-i-will-proceed-with-the-following-feature-chosing-methods-having-them-separated.">Now that I have quantitative and qualitiative variables split, I will proceed with the following feature chosing methods having them separated.</h5>
 <p>Note: The “Date Egg” and “Island” columns are currently stored wide. If I have time, I should come back and pivot them to be long.</p>
-<div id="cell-25" class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># removing low threshold variance variables from the qual columns</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>thresh30ql <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>highVar30ql <span class="op">=</span> thresh30ql.fit_transform(X_train1[all_qual_cols.columns])</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># using univariate feature selection, using F-tests to select the best qual feature</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>X_newql <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>X_newql.fit(X_train1[all_qual_cols.columns], y_train1)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># removing low threshold variance variables from the quant columns</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>thresh30qt <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>highVar30qt <span class="op">=</span> thresh30qt.fit_transform(X_train1[all_quant_cols.columns])</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># using univariate feature selection, using F-tests to select the 2 best quant features</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>X_newqt <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>X_newqt.fit(X_train1[all_quant_cols.columns], y_train1)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a new dataframe with the selected qualitative feature</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_newql.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>X_train_newql <span class="op">=</span> X_train1[all_qual_cols.columns].iloc[:,cols]</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding an ID column to data frame to add the selected quant features</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>X_train_newql[<span class="st">'ID'</span>] <span class="op">=</span> X_train1.index</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a new dataframe with the selected qualitative feature</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_newqt.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>X_train_newqt <span class="op">=</span> X_train1[all_quant_cols.columns].iloc[:,cols]</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># adding an ID column</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>X_train_newqt[<span class="st">'ID'</span>] <span class="op">=</span> X_train1.index</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># merging best qualitative and quantitative variabels into one data set</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>X_train_new_merged <span class="op">=</span> pd.merge(X_train_newql, X_train_newqt, on <span class="op">=</span> <span class="st">'ID'</span>)</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># removing the ID column</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>X_train_new_merged <span class="op">=</span> X_train_new_merged.drop([<span class="st">'ID'</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="co"># viewing the new dataframe</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>X_train_new_merged.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># removing low threshold variance variables from the qual columns</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>thresh30ql <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>highVar30ql <span class="op">=</span> thresh30ql.fit_transform(X_train1[all_qual_cols.columns])</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># using univariate feature selection, using F-tests to select the best qual feature</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>X_newql <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>X_newql.fit(X_train1[all_qual_cols.columns], y_train1)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># removing low threshold variance variables from the quant columns</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>thresh30qt <span class="op">=</span> VarianceThreshold(threshold <span class="op">=</span> (<span class="fl">0.7</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.7</span>)))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>highVar30qt <span class="op">=</span> thresh30qt.fit_transform(X_train1[all_quant_cols.columns])</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># using univariate feature selection, using F-tests to select the 2 best quant features</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>X_newqt <span class="op">=</span> SelectKBest(f_classif, k <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>X_newqt.fit(X_train1[all_quant_cols.columns], y_train1)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a new dataframe with the selected qualitative feature</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_newql.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>X_train_newql <span class="op">=</span> X_train1[all_qual_cols.columns].iloc[:,cols]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding an ID column to data frame to add the selected quant features</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>X_train_newql[<span class="st">'ID'</span>] <span class="op">=</span> X_train1.index</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a new dataframe with the selected qualitative feature</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_newqt.get_support(indices <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>X_train_newqt <span class="op">=</span> X_train1[all_quant_cols.columns].iloc[:,cols]</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># adding an ID column</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>X_train_newqt[<span class="st">'ID'</span>] <span class="op">=</span> X_train1.index</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># merging best qualitative and quantitative variabels into one data set</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>X_train_new_merged <span class="op">=</span> pd.merge(X_train_newql, X_train_newqt, on <span class="op">=</span> <span class="st">'ID'</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co"># removing the ID column</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>X_train_new_merged <span class="op">=</span> X_train_new_merged.drop([<span class="st">'ID'</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co"># viewing the new dataframe</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>X_train_new_merged.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/feature_selection/_univariate_selection.py:112: UserWarning: Features [0 4] are constant.
   warnings.warn("Features %s are constant." % constant_features_idx, UserWarning)
 /Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/feature_selection/_univariate_selection.py:113: RuntimeWarning: invalid value encountered in divide
   f = msb / msw</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="137">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -1325,40 +931,40 @@ background-size: cover;
 </section>
 <section id="after-using-both-quantiative-and-qualitative-features-it-appears-that-the-penguins-island-their-culmen-size-and-flipper-length-mm-are-the-best-features-as-determined-by-the-f-test.-with-these-variables-i-want-to-visualize-them-to-see-if-there-are-any-patterns" class="level5">
 <h5 class="anchored" data-anchor-id="after-using-both-quantiative-and-qualitative-features-it-appears-that-the-penguins-island-their-culmen-size-and-flipper-length-mm-are-the-best-features-as-determined-by-the-f-test.-with-these-variables-i-want-to-visualize-them-to-see-if-there-are-any-patterns">After using both quantiative and qualitative features, it appears that the penguins island, their culmen size, and Flipper Length (mm) are the “best” features as determined by the F-Test. With these variables, I want to visualize them to see if there are any patterns</h5>
-<div id="cell-27" class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Culmen Length (mm)'</span>, y <span class="op">=</span> <span class="st">'Flipper Length (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Culmen Length (mm)'</span>, y <span class="op">=</span> <span class="st">'Flipper Length (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Blog1Penguins_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Blog1Penguins_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>There seems to be a positive trend, as culmen length increases, so does flipper length. There also appear to be outliers, which will make training and testing more interesting.</p>
-<div id="cell-29" class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Island_Biscoe'</span>, y <span class="op">=</span> <span class="st">'Culmen Depth (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Island_Biscoe'</span>, y <span class="op">=</span> <span class="st">'Culmen Depth (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Blog1Penguins_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Blog1Penguins_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Of the penguins that live on the island and those that don’t, the culmen length is not significantly different</p>
-<div id="cell-31" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Island_Biscoe'</span>, y <span class="op">=</span> <span class="st">'Flipper Length (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Of the penguins that live on the island and those that don’t, the culmen depth is significantly different. This leads me to believe that there might be different breeds of penguins the live on these islands, which would make islands a very strong predictor.</p>
+<div id="cell-26" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(X_train_new_merged, x <span class="op">=</span> <span class="st">'Island_Biscoe'</span>, y <span class="op">=</span> <span class="st">'Flipper Length (mm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Blog1Penguins_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Blog1Penguins_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Of the penguins that live on and off the island, there is a significant difference in their flipper length.</p>
+<p>Of the penguins that live on and off the island, there is a significant difference in their flipper length. This further suggests that penguing may breed on and off the island biscoe.</p>
 <p>Trying another method to see if I get similar variable selection</p>
 <p>from sklearn.svm import LinearSVC from sklearn.datasets import load_iris from sklearn.feature_selection import SelectFromModel X_train1, y_train1 = load_iris(return_X__y=True) X_train1.shape lsvc = LinearSVC(C=0.01, penalty=“l1”, dual=False).fit(X_train1, y_train1) model = SelectFromModel(lsvc, prefit=True) X_new = model.transform(X_train1) X_new.shape</p>
 </section>
@@ -1368,13 +974,13 @@ background-size: cover;
 <section id="find-three-features-of-the-data-and-a-model-trained-on-the-features-that-achieve-100-testing-accuracy.-must-use-a-reproducible-process-to-obtain-the-three-features-code-up-a-search-to-obtain-them.-one-features-qualitative-two-quantitative" class="level5">
 <h5 class="anchored" data-anchor-id="find-three-features-of-the-data-and-a-model-trained-on-the-features-that-achieve-100-testing-accuracy.-must-use-a-reproducible-process-to-obtain-the-three-features-code-up-a-search-to-obtain-them.-one-features-qualitative-two-quantitative">Find <em>three features</em> of the data and a model trained on the features that achieve 100% testing accuracy. Must use a reproducible process to obtain the three features (code up a search to obtain them). One features qualitative, two quantitative</h5>
 <p>I think if I learned anything taking Stat learning with Professor Lyford, it is to be very suspicious if any model tests with 100% accuracy. Maybe I’m just not that good at making models, but I have never made a model with 100% testing accuracy without cheating. Either there’s a unique identifier, a tuning parameter of the model is off, or it’s just incredibly overfit.</p>
-<div id="cell-38" class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression()</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>LR.fit(X_train_new_merged, y_train1)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> LR.score(X_train_new_merged, y_train1)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>acc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>LR.fit(X_train_new_merged, y_train1)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> LR.score(X_train_new_merged, y_train1)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>acc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
@@ -1385,15 +991,15 @@ Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="138">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>0.99609375</code></pre>
 </div>
 </div>
 <p>It appear that using these three variables, chosen by using an F-test, the linear regression has a 99% accuracy. Narrowing down the variables from 64 to just 3 to ge 99% classification accuracy on the training data is not bad!</p>
-<div id="cell-41" class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>cv_scores_LR <span class="op">=</span> cross_val_score(LR, X_train_new_merged, y_train1, cv <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>cv_scores_LR.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cv_scores_LR <span class="op">=</span> cross_val_score(LR, X_train_new_merged, y_train1, cv <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>cv_scores_LR.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/breannaguo/anaconda3/envs/ml-0451/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
@@ -1436,7 +1042,7 @@ Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="132">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>0.9883861236802414</code></pre>
 </div>
 </div>
@@ -1444,26 +1050,29 @@ Please also refer to the documentation for alternative solver options:
 </section>
 <section id="time-to-run-it-on-the-testing-data-and-see-how-the-model-does" class="level3">
 <h3 class="anchored" data-anchor-id="time-to-run-it-on-the-testing-data-and-see-how-the-model-does">Time to run it on the testing data and see how the model does</h3>
-<div id="cell-43" class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>test_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/palmer-penguins/test.csv"</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> pd.read_csv(test_url)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_train_new_merged.columns</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> prepare_data(test)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>LR.score(X_test[cols], y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
+<div id="cell-37" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>test_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/palmer-penguins/test.csv"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> pd.read_csv(test_url)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> X_train_new_merged.columns</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> prepare_data(test)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>LR.score(X_test[cols], y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>1.0</code></pre>
 </div>
 </div>
-<p>While running the model on training data does not have 100% accuracy, the model gets 100% accuracy on the testing data. I won’t think too hard into the difference in accuracy here. It does make me think that there is maybe an outlier in my training data that doesn’t occur in the testing data</p>
+<p>While running the model on training data does not have 100% accuracy, the model gets 100% accuracy on the testing data. I won’t think too hard into the difference in accuracy here. It does make me think that there is maybe an outlier in my training data that doesn’t occur in the testing data. That seems pretty lucky. While getting 100% accuracy should be the goal, I’m not convinced that it is always feasible. A lot of data that we work with contains outliers and sometimes identifying those outliers may lead to an overfit model that might not perform well on new data.</p>
+</section>
+<section id="evaluate" class="level3">
+<h3 class="anchored" data-anchor-id="evaluate">3. Evaluate:</h3>
 </section>
 <section id="graphing-the-decision-regions" class="level3">
 <h3 class="anchored" data-anchor-id="graphing-the-decision-regions">Graphing the decision regions</h3>
-<div id="cell-46" class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>X_train_new_merged.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
+<div id="cell-41" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>X_train_new_merged.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -1531,68 +1140,69 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 </div>
-<div id="cell-47" class="cell" data-execution_count="140">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Patch</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_regions(model, X, y):</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    x0 <span class="op">=</span> X[X.columns[<span class="dv">3</span>]]</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> X[X.columns[<span class="dv">4</span>]]</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> X[X.columns[<span class="dv">5</span>]]</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    qual_features <span class="op">=</span> X.columns[:<span class="dv">3</span>]</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    fig, axarr <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(qual_features), figsize <span class="op">=</span> (<span class="dv">7</span>, <span class="dv">3</span>))</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a grid</span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    grid_x <span class="op">=</span> np.linspace(x0.<span class="bu">min</span>(),x0.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    grid_y <span class="op">=</span> np.linspace(x1.<span class="bu">min</span>(),x1.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    grid_z <span class="op">=</span> np.linspace(x2.<span class="bu">min</span>(),x2.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    xx, yy, zz <span class="op">=</span> np.meshgrid(grid_x, grid_y, grid_z)</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    XX <span class="op">=</span> xx.ravel()</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    YY <span class="op">=</span> yy.ravel()</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    ZZ <span class="op">=</span> zz.ravel()</span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(qual_features)):</span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>      XYZ <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">3</span>] : XX,</span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">4</span>] : YY,</span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">5</span>] : ZZ</span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> j <span class="kw">in</span> qual_features:</span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>        XYZ[j] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>      XYZ[qual_features[i]] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> model.predict(XYZ)</span>
-<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> p.reshape(xx.shape)</span>
-<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>      <span class="co"># use contour plot to visualize the predictions</span></span>
-<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>      axarr[i].contourf(xx, yy, zz, p, cmap <span class="op">=</span> <span class="st">"jet"</span>, alpha <span class="op">=</span> <span class="fl">0.2</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">2</span>)</span>
-<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>      ix <span class="op">=</span> X[qual_features[i]] <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>      <span class="co"># plot the data</span></span>
-<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>      axarr[i].scatter(x0[ix], x1[ix], x2[ix], c <span class="op">=</span> y[ix], cmap <span class="op">=</span> <span class="st">"jet"</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">2</span>)</span>
-<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>      axarr[i].<span class="bu">set</span>(xlabel <span class="op">=</span> X.columns[<span class="dv">0</span>], </span>
-<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>            ylabel  <span class="op">=</span> X.columns[<span class="dv">1</span>], </span>
-<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> qual_features[i])</span>
-<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>      patches <span class="op">=</span> []</span>
-<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> color, spec <span class="kw">in</span> <span class="bu">zip</span>([<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>], [<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>]):</span>
-<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>        patches.append(Patch(color <span class="op">=</span> color, label <span class="op">=</span> spec))</span>
-<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a>      plt.legend(title <span class="op">=</span> <span class="st">"Species"</span>, handles <span class="op">=</span> patches, loc <span class="op">=</span> <span class="st">"best"</span>)</span>
-<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>      plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Getting errors when graphing. Need to come back and revisit this code</p>
+<div id="cell-43" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Patch</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_regions(model, X, y):</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    x0 <span class="op">=</span> X[X.columns[<span class="dv">3</span>]]</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> X[X.columns[<span class="dv">4</span>]]</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> X[X.columns[<span class="dv">5</span>]]</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    qual_features <span class="op">=</span> X.columns[:<span class="dv">3</span>]</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    fig, axarr <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(qual_features), figsize <span class="op">=</span> (<span class="dv">7</span>, <span class="dv">3</span>))</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a grid</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    grid_x <span class="op">=</span> np.linspace(x0.<span class="bu">min</span>(),x0.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    grid_y <span class="op">=</span> np.linspace(x1.<span class="bu">min</span>(),x1.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    grid_z <span class="op">=</span> np.linspace(x2.<span class="bu">min</span>(),x2.<span class="bu">max</span>(),<span class="dv">501</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    xx, yy, zz <span class="op">=</span> np.meshgrid(grid_x, grid_y, grid_z)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    XX <span class="op">=</span> xx.ravel()</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    YY <span class="op">=</span> yy.ravel()</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    ZZ <span class="op">=</span> zz.ravel()</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(qual_features)):</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>      XYZ <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">3</span>] : XX,</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">4</span>] : YY,</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>          X.columns[<span class="dv">5</span>] : ZZ</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> j <span class="kw">in</span> qual_features:</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>        XYZ[j] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>      XYZ[qual_features[i]] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> model.predict(XYZ)</span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>      p <span class="op">=</span> p.reshape(xx.shape)</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>      <span class="co"># use contour plot to visualize the predictions</span></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>      axarr[i].contourf(xx, yy, zz, p, cmap <span class="op">=</span> <span class="st">"jet"</span>, alpha <span class="op">=</span> <span class="fl">0.2</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>      ix <span class="op">=</span> X[qual_features[i]] <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>      <span class="co"># plot the data</span></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>      axarr[i].scatter(x0[ix], x1[ix], x2[ix], c <span class="op">=</span> y[ix], cmap <span class="op">=</span> <span class="st">"jet"</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>      axarr[i].<span class="bu">set</span>(xlabel <span class="op">=</span> X.columns[<span class="dv">0</span>], </span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>            ylabel  <span class="op">=</span> X.columns[<span class="dv">1</span>], </span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> qual_features[i])</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>      patches <span class="op">=</span> []</span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> color, spec <span class="kw">in</span> <span class="bu">zip</span>([<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>], [<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>]):</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>        patches.append(Patch(color <span class="op">=</span> color, label <span class="op">=</span> spec))</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>      plt.legend(title <span class="op">=</span> <span class="st">"Species"</span>, handles <span class="op">=</span> patches, loc <span class="op">=</span> <span class="st">"best"</span>)</span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a>      plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_regions(LR, X_train_new_merged, y_train1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-44" class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_regions(LR, X_train_new_merged, y_train1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: The feature names should match those that were passed during fit.
 Feature names must be in the same order as they were in fit.</code></pre>
@@ -1600,19 +1210,14 @@ Feature names must be in the same order as they were in fit.</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Blog1Penguins_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Blog1Penguins_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="evaluate" class="level3">
-<h3 class="anchored" data-anchor-id="evaluate">3. Evaluate:</h3>
-<section id="show-decision-regions-of-mode-split-by-qualitative-feature" class="level5">
-<h5 class="anchored" data-anchor-id="show-decision-regions-of-mode-split-by-qualitative-feature">Show decision regions of mode, split by qualitative feature</h5>
+<p>As it turned out, the island on which the penguins live turned out to be a very powerful predictor in this model, in addition to culmen size.</p>
 
 
-</section>
 </section>
 </section>
 

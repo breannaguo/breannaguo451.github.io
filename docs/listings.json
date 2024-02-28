@@ -2,7 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Goal_Setting/goal-setting.html",
       "/posts/Penguins/Blog1Penguins.html",
+      "/posts/WiDS Blog Post/Blog2WiDS.html",
       "/posts/new-test-post/index.html",
       "/posts/example-blog-post/index.html"
     ]
